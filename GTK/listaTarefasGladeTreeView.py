@@ -7,7 +7,7 @@ class Aplicacion:
 
     def __init__(self):
         builder = Gtk.Builder()
-        builder.add_from_file("listaTarefasTreeView.glade")
+        builder.add_from_file("/home/dam2a/Escritorio/Python/glade/listaTarefasTreeView.glade")
 
 
 
@@ -19,8 +19,12 @@ class Aplicacion:
         self.txtTarefa = builder.get_object("txtTarefa")
         self.btnEngadir = builder.get_object("btnEngadir")
         self.crtFeito = builder.get_object ("crtFeito")
+        print(self.crtFeito.get_property("editing"))
+        self.crtTarefa = builder.get_object("crtTarefa")
+
+        #self.crtTarefa.set_property("editable", True)
         #self.crtFeito.set_property("editable",True)
-        self.crtFeito.connect("toggled",self.on_crtFeito_toggled )
+        #self.crtFeito.connect("toggled",self.on_crtFeito_toggled )
 
         #modeloLista = Gtk.ListStore(str, bool)
         #self.tvwTarefas.set_model(modeloLista)
