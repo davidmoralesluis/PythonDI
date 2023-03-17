@@ -55,6 +55,7 @@ class Aplicacion(Gtk.Window):
         celda3.set_property("model",modeloPerfis)
         celda3.set_property("text-column", 0)
         celda3.set_property("has-entry", False)
+        celda3.connect("changed", self.on_celda3_changed, modelo, modeloPerfis)
         columna3 = Gtk.TreeViewColumn("Perfil", celda3, text=3)
 
         """sinais = {"on_wndFiestraPrincipal_destroy": Gtk.main_quit,
@@ -73,6 +74,10 @@ class Aplicacion(Gtk.Window):
         self.add(caixaV)
         self.connect("destroy", Gtk.main_quit)
         self.show_all()
+
+    def on_celda3_changed (self, cellRendererCombo, fila, elemento, modeloTrv, modeloCmbPerfis):
+        modeloTrv[fila][2] = modeloCmbPerfis[elemento][1]
+        modeloTrv[fila][3] = modeloCmbPerfis[elemento][0]
 
 
 if __name__ == "__main__":
